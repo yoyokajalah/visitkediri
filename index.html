@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelajah Kediri - Harmoni Kota & Tradisi</title>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kediri-purple': '#5D2E8C',
+                        'kediri-dark': '#3a1b5c',
+                        'tahu-yellow': '#F4D03F',
+                        'tahu-dark': '#D4AC0D',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* CSS Tambahan untuk Dropdown Halus */
+        .group:hover .group-hover\:visible {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .dropdown-menu {
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        /* Sembunyikan scrollbar tapi tetap bisa di-scroll */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-5 px-6 md:px-12 flex justify-between items-center text-white bg-gradient-to-b from-black/60 to-transparent">
+        <a href="#" class="text-2xl font-display font-bold tracking-wider hover:text-tahu-yellow transition">
+            VISIT<span class="text-tahu-yellow">KEDIRI</span>
+        </a>
+        
+        <div class="hidden md:flex space-x-6 font-medium items-center text-sm lg:text-base">
+            <a href="#beranda" class="hover:text-tahu-yellow transition">Beranda</a>
+            
+            <div class="relative group">
+                <button class="flex items-center gap-1 hover:text-tahu-yellow transition focus:outline-none">
+                    Destinasi <i class="fas fa-chevron-down text-xs mt-1"></i>
+                </button>
+                <div class="dropdown-menu absolute left-0 mt-2 w-72 bg-white text-gray-800 rounded-xl shadow-xl overflow-hidden group-hover:visible group-hover:opacity-100 max-h-96 overflow-y-auto scrollbar-hide">
+                    
+                    <div class="sticky top-0 bg-gray-100 px-4 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider z-10 border-b">
+                        🏛️ Wisata Budaya & Alam
+                    </div>
+                    <a href="#" onclick="openModal('slg')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-monument w-5 text-kediri-purple group-hover:text-white"></i> Simpang Lima Gumul
+                    </a>
+                    <a href="#" onclick="openModal('selomangleng')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-gopuram w-5 text-kediri-purple group-hover:text-white"></i> Goa Selomangleng
+                    </a>
+                    <a href="#" onclick="openModal('kelud')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-mountain w-5 text-kediri-purple group-hover:text-white"></i> Gunung Kelud
+                    </a>
+                    <a href="#" onclick="openModal('museum_airlangga')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-history w-5 text-kediri-purple group-hover:text-white"></i> Museum Airlangga
+                    </a>
+                    <a href="#" onclick="openModal('taman_brantas')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-water w-5 text-kediri-purple group-hover:text-white"></i> Taman Kota Brantas
+                    </a>
+                    <a href="#" onclick="openModal('taman_ngronggo')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-tree w-5 text-kediri-purple group-hover:text-white"></i> Taman Ngronggo
+                    </a>
+
+                    <div class="sticky top-0 bg-gray-100 px-4 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider z-10 border-b border-t">
+                        🙏 Wisata Religi
+                    </div>
+                    <a href="#" onclick="openModal('puhsarang')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-church w-5 text-kediri-purple group-hover:text-white"></i> Goa Maria Lourdes
+                    </a>
+                    <a href="#" onclick="openModal('kelenteng')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-synagogue w-5 text-kediri-purple group-hover:text-white"></i> Kelenteng Tjoe Hwie Kiong
+                    </a>
+
+                    <div class="sticky top-0 bg-gray-100 px-4 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider z-10 border-b border-t">
+                        🛍️ Wisata Belanja
+                    </div>
+                    <a href="#" onclick="openModal('tenun_ikat')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-tshirt w-5 text-kediri-purple group-hover:text-white"></i> Tenun Ikat Bandar
+                    </a>
+                    <a href="#" onclick="openModal('pusat_oleh')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-gift w-5 text-kediri-purple group-hover:text-white"></i> Pusat Oleh-oleh Kediri
+                    </a>
+                    <a href="#" onclick="openModal('ketos')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-shopping-bag w-5 text-kediri-purple group-hover:text-white"></i> Kediri Town Square
+                    </a>
+                    <a href="#" onclick="openModal('kediri_mall')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-building w-5 text-kediri-purple group-hover:text-white"></i> Kediri Mall / Transmart
+                    </a>
+                    <a href="#" onclick="openModal('dhoho_plaza')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-store w-5 text-kediri-purple group-hover:text-white"></i> Dhoho Plaza
+                    </a>
+                    <a href="#" onclick="openModal('ramayana')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-tag w-5 text-kediri-purple group-hover:text-white"></i> Mal Ramayana
+                    </a>
+                    <a href="#" onclick="openModal('alun_alun')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-tree w-5 text-kediri-purple group-hover:text-white"></i> Alun-Alun Kota
+                    </a>
+                    <a href="#" onclick="openModal('pasar_bandar')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-shopping-basket w-5 text-kediri-purple group-hover:text-white"></i> Pasar Bandar
+                    </a>
+                    <a href="#" onclick="openModal('supermarket_emas')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition border-b border-gray-50">
+                        <i class="fas fa-gem w-5 text-kediri-purple group-hover:text-white"></i> Supermarket Emas
+                    </a>
+                    <a href="#" onclick="openModal('sri_ratu')" class="block px-4 py-2 hover:bg-kediri-purple hover:text-white transition">
+                        <i class="fas fa-star w-5 text-kediri-purple group-hover:text-white"></i> Legenda Sri Ratu
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <button class="flex items-center gap-1 hover:text-tahu-yellow transition focus:outline-none">
+                    Cerita Rakyat <i class="fas fa-chevron-down text-xs mt-1"></i>
+                </button>
+                <div class="dropdown-menu absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-xl shadow-xl overflow-hidden group-hover:visible group-hover:opacity-100">
+                    <a href="#" onclick="openModal('cerita_panji')" class="block px-4 py-3 hover:bg-kediri-purple hover:text-white transition border-b border-gray-100">
+                        <i class="fas fa-book-open mr-2 text-kediri-purple group-hover:text-white"></i> Cerita Panji
+                    </a>
+                    <a href="#" onclick="openModal('tari_jaranan')" class="block px-4 py-3 hover:bg-kediri-purple hover:text-white transition">
+                        <i class="fas fa-mask mr-2 text-kediri-purple group-hover:text-white"></i> Tari Jaranan
+                    </a>
+                </div>
+            </div>
+
+            <a href="#hotel" class="hover:text-tahu-yellow transition">Hotel</a>
+            
+            <div class="relative group">
+                <button class="flex items-center gap-1 hover:text-tahu-yellow transition focus:outline-none">
+                    Pendidikan <i class="fas fa-chevron-down text-xs mt-1"></i>
+                </button>
+                <div class="dropdown-menu absolute left-0 mt-2 w-56 bg-white text-gray-800 rounded-xl shadow-xl overflow-hidden group-hover:visible group-hover:opacity-100">
+                    <a href="#kampus" class="block px-4 py-3 hover:bg-kediri-purple hover:text-white transition border-b border-gray-100">
+                        <i class="fas fa-graduation-cap mr-2 text-kediri-purple group-hover:text-white"></i> Perguruan Tinggi
+                    </a>
+                    <a href="#sekolah" class="block px-4 py-3 hover:bg-kediri-purple hover:text-white transition border-b border-gray-100">
+                        <i class="fas fa-school mr-2 text-kediri-purple group-hover:text-white"></i> Sekolah Favorit
+                    </a>
+                    <a href="#pesantren" class="block px-4 py-3 hover:bg-kediri-purple hover:text-white transition">
+                        <i class="fas fa-mosque mr-2 text-kediri-purple group-hover:text-white"></i> Pondok Pesantren
+                    </a>
+                </div>
+            </div>
+
+            <a href="#kuliner" class="hover:text-tahu-yellow transition">Kuliner</a>
+            <a href="#peta" class="hover:text-tahu-yellow transition">Peta</a>
+            
+            <a href="#" class="bg-tahu-yellow text-kediri-purple px-6 py-2 rounded-full font-bold hover:bg-white transition shadow-lg transform hover:scale-105">
+                Panduan
+            </a>
+        </div>
+
+        <button class="md:hidden text-2xl text-white">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <header id="beranda" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1572917718876-241eb41db84f?q=80&w=1920" class="w-full h-full object-cover">
+                <source src="https://videos.pexels.com/video-files/3205914/3205914-hd_1920_1080_25fps.mp4" type="video/mp4">
+                Browser Anda tidak mendukung tag video.
+            </video>
+            
+            <div class="absolute inset-0 bg-kediri-purple/40 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-black/30"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mt-16">
+            <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-tahu-yellow font-bold text-sm mb-4 tracking-widest uppercase animate-pulse">
+                Jawa Timur - Indonesia
+            </span>
+            <h1 class="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight text-shadow">
+                Kediri <br><span class="text-tahu-yellow">Bersemi</span>
+            </h1>
+            <p class="text-gray-200 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light">
+                Jelajahi kota tua yang penuh cerita. Dari kemegahan Simpang Lima Gumul hingga kelezatan Tahu Kuning yang melegenda.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#destinasi" class="bg-tahu-yellow text-kediri-purple px-8 py-4 rounded-xl font-bold hover:bg-white transition shadow-xl border-b-4 border-tahu-dark">
+                    Mulai Eksplorasi
+                </a>
+                <a href="#peta" class="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md border border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-kediri-purple transition">
+                    <i class="fas fa-map-marked-alt"></i> Lihat Peta
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 relative z-20 -mt-16">
+        <div class="bg-white rounded-xl shadow-2xl p-6 md:p-8 flex flex-col md:flex-row justify-around items-center text-center divide-y md:divide-y-0 md:divide-x divide-gray-200">
+            <div class="p-4 w-full">
+                <i class="fas fa-landmark text-3xl text-kediri-purple mb-2"></i>
+                <h3 class="text-2xl font-bold text-gray-800">879 M</h3>
+                <p class="text-gray-500 text-sm">Sejarah Prasasti Kwak</p>
+            </div>
+            <div class="p-4 w-full">
+                <i class="fas fa-mountain text-3xl text-kediri-purple mb-2"></i>
+                <h3 class="text-2xl font-bold text-gray-800">1731 mdpl</h3>
+                <p class="text-gray-500 text-sm">Puncak Gunung Kelud</p>
+            </div>
+            <div class="p-4 w-full">
+                <i class="fas fa-star text-3xl text-kediri-purple mb-2"></i>
+                <h3 class="text-2xl font-bold text-gray-800">4.8/5</h3>
+                <p class="text-gray-500 text-sm">Rating Wisatawan</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="destinasi" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h4 class="text-kediri-purple font-bold uppercase tracking-widest mb-2">Destinasi Unggulan</h4>
+                    <h2 class="text-4xl font-display font-bold text-gray-900">Ikon Kota Kediri</h2>
+                </div>
+                <a href="#" class="text-kediri-purple font-bold hover:text-tahu-dark mt-4 md:mt-0 group">
+                    Lihat Semua <i class="fas fa-arrow-right ml-1 transform group-hover:translate-x-1 transition"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 flex flex-col h-full">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="slg.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-4 right-4 bg-kediri-purple text-white text-xs font-bold px-3 py-1 rounded-full">LANDMARK</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Simpang Lima Gumul</h3>
+                        <p class="text-gray-600 text-sm line-clamp-2 mb-4">Monumen ikonik yang menyerupai Arc de Triomphe di Paris. Pusat rekreasi keluarga yang indah.</p>
+                        <button onclick="openModal('slg')" class="mt-auto w-full py-2 rounded-lg border-2 border-kediri-purple text-kediri-purple font-bold hover:bg-kediri-purple hover:text-white transition">
+                            Lihat Detail
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 flex flex-col h-full">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="GK.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-4 right-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">ALAM</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Gunung Kelud</h3>
+                        <p class="text-gray-600 text-sm line-clamp-2 mb-4">Nikmati pemandangan kawah vulkanik yang memukau dan petualangan jeep offroad.</p>
+                        <button onclick="openModal('kelud')" class="mt-auto w-full py-2 rounded-lg border-2 border-kediri-purple text-kediri-purple font-bold hover:bg-kediri-purple hover:text-white transition">
+                            Lihat Detail
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 flex flex-col h-full">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="GOA1.webp" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-4 right-4 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full">SEJARAH</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Goa Selomangleng</h3>
+                        <p class="text-gray-600 text-sm line-clamp-2 mb-4">Situs pertapaan Dewi Kilisuci dengan relief batu andesit. Wisata sejarah dan budaya.</p>
+                        <button onclick="openModal('selomangleng')" class="mt-auto w-full py-2 rounded-lg border-2 border-kediri-purple text-kediri-purple font-bold hover:bg-kediri-purple hover:text-white transition">
+                            Lihat Detail
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hotel" class="py-24 bg-white relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h4 class="text-kediri-purple font-bold uppercase tracking-widest mb-2">Akomodasi Pilihan</h4>
+                <h2 class="text-4xl font-display font-bold text-gray-900">Istirahat Nyaman di Kediri</h2>
+                <div class="w-24 h-1 bg-tahu-yellow mx-auto mt-4 rounded-full"></div>
+                <p class="text-gray-500 mt-4 max-w-2xl mx-auto">Dari hotel berbintang hingga penginapan hemat yang nyaman, temukan tempat terbaik untuk melepas lelah.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:shadow-2xl transition duration-300 hover:-translate-y-2">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop" 
+                             alt="Grand Surya Hotel" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white px-2 py-1 rounded-md text-xs font-bold text-gray-800 shadow-sm">⭐ 4.8</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900">Grand Surya Hotel</h3>
+                        <p class="text-sm text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-kediri-purple mr-1"></i> Jl. Dhoho, Pusat Kota</p>
+                        
+                        <div class="border-t border-gray-200 pt-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs text-gray-500">Mulai dari</span>
+                                <span class="text-lg font-bold text-kediri-purple">Rp 766.000</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <a href="https://www.traveloka.com/id-id/hotel/indonesia/grand-surya-hotel-kediri-3000010000494" target="_blank" class="flex items-center justify-center bg-blue-500 text-white py-2 rounded-lg text-xs font-bold hover:bg-blue-600 transition">
+                                    <i class="fas fa-plane-departure mr-1"></i> Traveloka
+                                </a>
+                                <a href="https://www.tiket.com/hotel/indonesia/grand-surya-hotel-kediri-108001534490324710" target="_blank" class="flex items-center justify-center bg-blue-700 text-white py-2 rounded-lg text-xs font-bold hover:bg-blue-800 transition">
+                                    <i class="fas fa-ticket-alt mr-1"></i> Tiket.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:shadow-2xl transition duration-300 hover:-translate-y-2">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800&auto=format&fit=crop" 
+                             alt="Lotus Garden Hotel" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white px-2 py-1 rounded-md text-xs font-bold text-gray-800 shadow-sm">⭐ 4.5</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900">Lotus Garden</h3>
+                        <p class="text-sm text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-kediri-purple mr-1"></i> Mojoroto</p>
+                        
+                        <div class="border-t border-gray-200 pt-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs text-gray-500">Mulai dari</span>
+                                <span class="text-lg font-bold text-kediri-purple">Rp 434.000</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <a href="https://www.traveloka.com/id-id/hotel/indonesia/lotus-garden-hotel-by-waringin-hospitality-3000010000549" target="_blank" class="flex items-center justify-center bg-blue-500 text-white py-2 rounded-lg text-xs font-bold hover:bg-blue-600 transition">
+                                    <i class="fas fa-plane-departure mr-1"></i> Traveloka
+                                </a>
+                                <a href="https://www.tiket.com/hotel/indonesia/lotus-garden-hotel-by-waringin-hospitality-410001635446293194" target="_blank" class="flex items-center justify-center bg-blue-700 text-white py-2 rounded-lg text-xs font-bold hover:bg-blue-800 transition">
+                                    <i class="fas fa-ticket-alt mr-1"></i> Tiket.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:shadow-2xl transition duration-300 hover:-translate-y-2">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=800&auto=format&fit=crop" 
+                             alt="Front One Inn" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white px-2 py-1 rounded-md text-xs font-bold text-gray-800 shadow-sm">⭐ 4.2</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900">Front One Inn</h3>
+                        <p class="text-sm text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-kediri-purple mr-1"></i> Katang</p>
+                        
+                        <div class="border-t border-gray-200 pt-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs text-gray-500">Mulai dari</span>
+                                <span class="text-lg font-bold text-kediri-purple">Rp 334.000</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <a href="https://www.traveloka.com/id-id/hotel/indonesia/front-one-inn-kediri-3000020015117" target="_blank" class="flex items-center justify-center bg-blue-500 text-white py-2 rounded-lg text-xs font-bold hover:bg-blue-600 transition">
+                                    <i class="fas fa-plane-departure mr-1"></i> Traveloka
+                                </a>
+                                <a href="https://www.tiket.com/hotel/indonesia/front-one-inn-kediri-109001537352174398" target="_blank" class="flex items-center justify-center bg-blue-700 text-white py-2 rounded-lg text-xs font-bold hover:bg-blue-800 transition">
+                                    <i class="fas fa-ticket-alt mr-1"></i> Tiket.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://www.traveloka.com/id-id/hotel/indonesia/city/kediri-city-102798" target="_blank" class="inline-block border-2 border-kediri-purple text-kediri-purple px-8 py-3 rounded-full font-bold hover:bg-kediri-purple hover:text-white transition">
+                    Lihat Semua Penginapan di Kediri
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="pendidikan-main" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h4 class="text-kediri-purple font-bold uppercase tracking-widest mb-2">Kota Pendidikan</h4>
+                <h2 class="text-4xl font-display font-bold text-gray-900">Sarana Edukasi Kediri</h2>
+                <div class="w-24 h-1 bg-tahu-yellow mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div id="kampus" class="mb-16 scroll-mt-24">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="h-10 w-2 bg-kediri-purple rounded-full"></div>
+                    <h3 class="text-2xl font-bold text-gray-800">Perguruan Tinggi</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-kediri-purple transition group">
+                        <div class="w-12 h-12 bg-purple-100 text-kediri-purple rounded-full flex items-center justify-center text-xl mb-4 group-hover:bg-kediri-purple group-hover:text-white transition">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-1">Universitas Islam Kadiri</h4>
+                        <p class="text-gray-500 text-sm">Kampus tertua di Kediri dengan berbagai fakultas unggulan.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-kediri-purple transition group">
+                        <div class="w-12 h-12 bg-purple-100 text-kediri-purple rounded-full flex items-center justify-center text-xl mb-4 group-hover:bg-kediri-purple group-hover:text-white transition">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-1">Universitas Kadiri</h4>
+                        <p class="text-gray-500 text-sm">Terletak di lereng bukit, menawarkan suasana belajar yang asri.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-kediri-purple transition group">
+                        <div class="w-12 h-12 bg-purple-100 text-kediri-purple rounded-full flex items-center justify-center text-xl mb-4 group-hover:bg-kediri-purple group-hover:text-white transition">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-1">PSDKU Polinema</h4>
+                        <p class="text-gray-500 text-sm">Politeknik Negeri Malang Kampus Kediri.</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-kediri-purple transition group">
+                        <div class="w-12 h-12 bg-purple-100 text-kediri-purple rounded-full flex items-center justify-center text-xl mb-4 group-hover:bg-kediri-purple group-hover:text-white transition">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-1">IIK Bhakti Wiyata</h4>
+                        <p class="text-gray-500 text-sm">Institut Ilmu Kesehatan pertama di Indonesia.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div id="sekolah" class="scroll-mt-24">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="h-10 w-2 bg-tahu-yellow rounded-full"></div>
+                        <h3 class="text-2xl font-bold text-gray-800">Sekolah Favorit</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div onclick="openModal('sman5')" class="flex items-start bg-white p-4 rounded-lg shadow-sm border-l-4 border-tahu-yellow transition hover:shadow-md cursor-pointer group hover:scale-[1.02]">
+                            <i class="fas fa-star text-tahu-dark mt-1 mr-3 text-lg group-hover:text-kediri-purple transition"></i>
+                            <div>
+                                <h5 class="font-bold text-kediri-purple">SMAN 5 Taruna Brawijaya</h5>
+                                <p class="text-sm text-gray-600 mb-1"><i class="fas fa-map-pin mr-1"></i> Jl. Selomangleng No. 2, Kota Kediri</p>
+                                <p class="text-xs text-gray-500 font-bold">Info Detail & Lokasi <i class="fas fa-arrow-right ml-1"></i></p>
+                            </div>
+                        </div>
+
+                        <div onclick="openModal('sman1')" class="flex items-start bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition cursor-pointer group hover:scale-[1.02]">
+                            <i class="fas fa-school text-tahu-dark mt-1 mr-3 text-lg group-hover:text-kediri-purple transition"></i>
+                            <div>
+                                <h5 class="font-bold">SMAN 1 Kediri</h5>
+                                <p class="text-sm text-gray-500">Jl. Veteran - Sekolah legendaris dengan prestasi akademik tinggi.</p>
+                            </div>
+                        </div>
+
+                        <div onclick="openModal('sman2')" class="flex items-start bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition cursor-pointer group hover:scale-[1.02]">
+                            <i class="fas fa-school text-tahu-dark mt-1 mr-3 text-lg group-hover:text-kediri-purple transition"></i>
+                            <div>
+                                <h5 class="font-bold">SMAN 2 Kediri</h5>
+                                <p class="text-sm text-gray-500">Jl. Veteran - Dikenal dengan sebutan SMADA.</p>
+                            </div>
+                        </div>
+
+                        <div onclick="openModal('man2')" class="flex items-start bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition cursor-pointer group hover:scale-[1.02]">
+                            <i class="fas fa-school text-tahu-dark mt-1 mr-3 text-lg group-hover:text-kediri-purple transition"></i>
+                            <div>
+                                <h5 class="font-bold">MAN 2 Kota Kediri</h5>
+                                <p class="text-sm text-gray-500">Madrasah Aliyah Negeri unggulan berbasis riset.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="pesantren" class="scroll-mt-24">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="h-10 w-2 bg-green-600 rounded-full"></div>
+                        <h3 class="text-2xl font-bold text-gray-800">Pondok Pesantren</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start bg-white p-4 rounded-lg shadow-sm border-l-4 border-green-600">
+                            <i class="fas fa-mosque text-green-600 mt-1 mr-3 text-lg"></i>
+                            <div>
+                                <h5 class="font-bold">Ponpes Lirboyo</h5>
+                                <p class="text-sm text-gray-500">Salah satu pesantren terbesar dan tertua di Indonesia, menjadi ikon wisata religi.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start bg-white p-4 rounded-lg shadow-sm border-l-4 border-green-600">
+                            <i class="fas fa-mosque text-green-600 mt-1 mr-3 text-lg"></i>
+                            <div>
+                                <h5 class="font-bold">Ponpes Wali Barokah</h5>
+                                <p class="text-sm text-gray-500">Pesantren megah dengan menara tinggi yang menjadi landmark tengah kota.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start bg-white p-4 rounded-lg shadow-sm border-l-4 border-green-600">
+                            <i class="fas fa-mosque text-green-600 mt-1 mr-3 text-lg"></i>
+                            <div>
+                                <h5 class="font-bold">Ponpes Al-Falah Ploso</h5>
+                                <p class="text-sm text-gray-500">Terletak di Mojo, dikenal mencetak banyak ulama besar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="kuliner" class="py-24 bg-kediri-purple text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-tahu-yellow/10 rounded-full blur-3xl -ml-20 -mb-20"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-tahu-yellow text-kediri-purple font-bold px-4 py-1 rounded-full text-sm mb-4">
+                    <i class="fas fa-utensils mr-2"></i> WISATA RASA
+                </div>
+                <h2 class="text-4xl font-display font-bold text-white">Surga Kuliner Kediri</h2>
+                <p class="text-gray-200 mt-4 max-w-2xl mx-auto">
+                    Panduan lengkap cita rasa Kediri. Mulai dari warung legendaris, pusat oleh-oleh, hingga spot pedas favorit warga lokal.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div onclick="openModal('pecel')" class="cursor-pointer bg-white rounded-xl overflow-hidden shadow-lg hover:transform hover:-translate-y-2 transition duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?q=80&w=600&auto=format&fit=crop" alt="Nasi Pecel" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-black/60 text-white text-xs px-2 py-1 m-2 rounded">🌙 Buka Malam</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1 group-hover:text-kediri-purple transition">Pecel Jalan Dhoho</h3>
+                        <p class="text-xs text-gray-500 mb-2"><i class="fas fa-map-marker-alt text-kediri-purple mr-1"></i> Jl. Dhoho</p>
+                        <p class="text-sm text-gray-600">Wisata kuliner malam dengan konsep lesehan yang ikonik.</p>
+                        <div class="mt-3 text-xs font-bold text-kediri-purple flex items-center gap-1">
+                            Lihat Menu & Info <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="openModal('soto')" class="cursor-pointer bg-white rounded-xl overflow-hidden shadow-lg hover:transform hover:-translate-y-2 transition duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1572656631137-7935297eff55?q=80&w=600&auto=format&fit=crop" alt="Soto Kediri" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-tahu-yellow text-kediri-purple text-xs font-bold px-2 py-1 m-2 rounded">🏆 Legendaris 1926</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1 group-hover:text-kediri-purple transition">Soto Ayam Podjok</h3>
+                        <p class="text-xs text-gray-500 mb-2"><i class="fas fa-map-marker-alt text-kediri-purple mr-1"></i> Jl. Dhoho (Pojok)</p>
+                        <p class="text-sm text-gray-600">Soto ayam kampung dengan kuah santan kuning yang gurih.</p>
+                        <div class="mt-3 text-xs font-bold text-kediri-purple flex items-center gap-1">
+                            Lihat Menu & Info <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="openModal('tahu')" class="cursor-pointer bg-white rounded-xl overflow-hidden shadow-lg hover:transform hover:-translate-y-2 transition duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1626805179040-1a67732d8478?q=80&w=600&auto=format&fit=crop" alt="Tahu Kuning" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-purple-600 text-white text-xs px-2 py-1 m-2 rounded">🎁 Oleh-Oleh</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1 group-hover:text-kediri-purple transition">Tahu Takwa (Kuning)</h3>
+                        <p class="text-xs text-gray-500 mb-2"><i class="fas fa-map-marker-alt text-kediri-purple mr-1"></i> Jl. Pattimura</p>
+                        <p class="text-sm text-gray-600">Tahu kuning padat khas Kediri yang tidak masam.</p>
+                        <div class="mt-3 text-xs font-bold text-kediri-purple flex items-center gap-1">
+                            Lihat Menu & Info <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="openModal('bekicot')" class="cursor-pointer bg-white rounded-xl overflow-hidden shadow-lg hover:transform hover:-translate-y-2 transition duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1529563021892-1dc30c6a5122?q=80&w=600&auto=format&fit=crop" alt="Sate Bekicot" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-red-600 text-white text-xs px-2 py-1 m-2 rounded">🔥 Kuliner Unik</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1 group-hover:text-kediri-purple transition">Sate Bekicot 02</h3>
+                        <p class="text-xs text-gray-500 mb-2"><i class="fas fa-map-marker-alt text-kediri-purple mr-1"></i> Plosoklaten</p>
+                        <p class="text-sm text-gray-600">Olahan daging bekicot (02) menjadi sate, kripik, dan krengsengan.</p>
+                        <div class="mt-3 text-xs font-bold text-kediri-purple flex items-center gap-1">
+                            Lihat Menu & Info <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 md:p-12">
+                <div class="text-center mb-10">
+                    <h3 class="text-2xl font-bold text-tahu-yellow mb-2">Direktori Kuliner Terpopuler</h3>
+                    <p class="text-gray-300 text-sm">Daftar rekomendasi tempat makan berdasarkan kategori untuk memudahkan pencarian Anda.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div>
+                        <h4 class="flex items-center text-xl font-bold mb-4 text-white">
+                            <i class="fas fa-award text-tahu-yellow mr-2"></i> Legendaris
+                        </h4>
+                        <ul class="space-y-4">
+                            <li onclick="openModal('soto_brantas')" class="bg-white/90 p-3 rounded-lg flex justify-between items-center group cursor-pointer hover:bg-white transition hover:shadow-md hover:scale-[1.02]">
+                                <div>
+                                    <h5 class="text-kediri-purple font-bold text-sm">Soto Taman Brantas</h5>
+                                    <p class="text-gray-500 text-xs">Jl. Sultan Agung (Soto Ayam Kampung)</p>
+                                </div>
+                                <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">Sarapan</span>
+                            </li>
+                            <li onclick="openModal('pecel_punten')" class="bg-white/90 p-3 rounded-lg flex justify-between items-center group cursor-pointer hover:bg-white transition hover:shadow-md hover:scale-[1.02]">
+                                <div>
+                                    <h5 class="text-kediri-purple font-bold text-sm">Pecel Punten</h5>
+                                    <p class="text-gray-500 text-xs">Ketami, Pesantren (Unik & Pedas)</p>
+                                </div>
+                                <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">Pagi/Siang</span>
+                            </li>
+                            <li onclick="openModal('sate_emprit')" class="bg-white/90 p-3 rounded-lg flex justify-between items-center group cursor-pointer hover:bg-white transition hover:shadow-md hover:scale-[1.02]">
+                                <div>
+                                    <h5 class="text-kediri-purple font-bold text-sm">Sate Emprit Mbah Darmo</h5>
+                                    <p class="text-gray-500 text-xs">Wates (Burung Pipit Goreng/Sate)</p>
+                                </div>
+                                <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">Unik</span>
+                            </li>
+                            <li onclick="openModal('depot_wilis')" class="bg-white/90 p-3 rounded-lg flex justify-between items-center group cursor-pointer hover:bg-white transition hover:shadow-md hover:scale-[1.02]">
+                                <div>
+                                    <h5 class="text-kediri-purple font-bold text-sm">Depot Wilis</h5>
+                                    <p class="text-gray-500 text-xs">Jl. Panglima Sudirman (Masakan Jawa)</p>
+                                </div>
+                                <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">Keluarga</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="flex items-center text-xl font-bold mb-4 text-white">
+                            <i class="fas fa-gift text-tahu-yellow mr-2"></i> Oleh-Oleh Wajib
+                        </h4>
+                        <ul class="space-y-4">
+                            <li onclick="openModal('tahu_bahkacung')" class="bg-white/90 p-3 rounded-lg flex justify-between items-center group cursor-pointer hover:bg-white transition hover:shadow-md hover:scale-[1.02]">
+                                <div>
+                                    <h5 class="text-kediri-purple font-bold text-sm">Tahu Bah Kacung</h5>
+                                    <p class="text-gray-500 text-xs">Jl. Trunojoyo (Pelopor Tahu Kediri)</p>
+                                </div>
+                                <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">Sejak 1912</span>
+                            </li>
+                            <li onclick="openModal('tahu_poo')" class="bg-white/90 p-3 rounded-lg flex justify-between items-center group cursor-pointer hover:bg-white transition hover:shadow-md hover:scale-[1.02]">
+                                <div>
+                                    <h5 class="text-kediri-purple font-bold text-sm">Tahu POO & GTT</h5>
+                                    <p class="text-gray-500 text-xs">Jl. Yos Sudarso (Pusat Oleh-oleh)</p>
+                                </div>
+                                <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">Populer</span>
+                            </li>
+                            <li onclick="openModal('getuk_baud')" class="bg-white/90 p-3 rounded-lg flex justify-between items-center group cursor-pointer hover:bg-white transition hover:shadow-md hover:scale-[1.02]">
+                                <div>
+                                    <h5 class="text-kediri-purple font-bold text-sm">Getuk Pisang Ba'ud</h5>
+                                    <p class="text-gray-500 text-xs">Jajanan manis khas dari pisang raja nangka</p>
+                                </div>
+                                <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">Manis</span>
+                            </li>
+                            <li onclick="openModal('coklat_tempe')" class="bg-white/90 p-3 rounded-lg flex justify-between items-center group cursor-pointer hover:bg-white transition hover:shadow-md hover:scale-[1.02]">
+                                <div>
+                                    <h5 class="text-kediri-purple font-bold text-sm">Coklat Tempe</h5>
+                                    <p class="text-gray-500 text-xs">Inovasi olahan kedelai modern</p>
+                                </div>
+                                <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">Modern</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="flex items-center text-xl font-bold mb-4 text-white">
+                            <i class="fas fa-fire text-tahu-yellow mr-2"></i> Favorit & Pedas
+                        </h4>
+                        <ul class="space-y-4">
+                            <li onclick="openModal('bebek_carok')" class="bg-white/90 p-3 rounded-lg flex justify-between items-center group cursor-pointer hover:bg-white transition hover:shadow-md hover:scale-[1.02]">
+                                <div>
+                                    <h5 class="text-kediri-purple font-bold text-sm">Bebek Carok</h5>
+                                    <p class="text-gray-500 text-xs">Jl. Letjen Suparman (Tosaren)</p>
+                                </div>
+                                <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">Bumbu Hitam</span>
+                            </li>
+                            <li onclick="openModal('waroeng_ss')" class="bg-white/90 p-3 rounded-lg flex justify-between items-center group cursor-pointer hover:bg-white transition hover:shadow-md hover:scale-[1.02]">
+                                <div>
+                                    <h5 class="text-kediri-purple font-bold text-sm">Waroeng SS</h5>
+                                    <p class="text-gray-500 text-xs">Jl. Letjen Suparman (Tosaren)</p>
+                                </div>
+                                <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">Spesial Sambal</span>
+                            </li>
+                            <li onclick="openModal('balungan_pecok')" class="bg-white/90 p-3 rounded-lg flex justify-between items-center group cursor-pointer hover:bg-white transition hover:shadow-md hover:scale-[1.02]">
+                                <div>
+                                    <h5 class="text-kediri-purple font-bold text-sm">Balungan Pecok</h5>
+                                    <p class="text-gray-500 text-xs">Pedas nampol bagi pecinta daging</p>
+                                </div>
+                                <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">Pedas</span>
+                            </li>
+                            <li onclick="openModal('nasgor_arang')" class="bg-white/90 p-3 rounded-lg flex justify-between items-center group cursor-pointer hover:bg-white transition hover:shadow-md hover:scale-[1.02]">
+                                <div>
+                                    <h5 class="text-kediri-purple font-bold text-sm">Nasi Goreng Arang</h5>
+                                    <p class="text-gray-500 text-xs">Sepanjang Jl. Dhoho (Aroma Angkringan)</p>
+                                </div>
+                                <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">Malam</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <p class="text-gray-400 text-xs italic">*Daftar ini telah dikurasi berdasarkan popularitas dan ulasan wisatawan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="peta" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h4 class="text-kediri-purple font-bold uppercase tracking-widest mb-2">Lokasi & Rute</h4>
+                <h2 class="text-4xl font-display font-bold text-gray-900">Peta Jelajah Kediri</h2>
+                <div class="w-24 h-1 bg-tahu-yellow mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row bg-gray-50 rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <div class="lg:w-1/3 p-0 flex flex-col h-[500px]">
+                    <div class="bg-kediri-purple text-white p-6">
+                        <h3 class="font-bold text-xl mb-1">Destinasi Populer</h3>
+                        <p class="text-sm text-purple-200">Klik ikon arah untuk navigasi</p>
+                    </div>
+                    
+                    <div class="overflow-y-auto flex-1 location-list p-4 space-y-3">
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:border-tahu-yellow transition group">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-gray-800 group-hover:text-kediri-purple transition">Simpang Lima Gumul</h4>
+                                    <p class="text-xs text-gray-500 mt-1"><i class="fas fa-clock mr-1"></i> Buka 24 Jam</p>
+                                </div>
+                                <a href="https://maps.google.com" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-kediri-purple hover:bg-tahu-yellow hover:text-white transition">
+                                    <i class="fas fa-location-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:border-tahu-yellow transition group">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-gray-800 group-hover:text-kediri-purple transition">Gunung Kelud</h4>
+                                    <p class="text-xs text-gray-500 mt-1"><i class="fas fa-clock mr-1"></i> 06:00 - 17:00</p>
+                                </div>
+                                <a href="https://maps.google.com" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-kediri-purple hover:bg-tahu-yellow hover:text-white transition">
+                                    <i class="fas fa-location-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:border-tahu-yellow transition group">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-gray-800 group-hover:text-kediri-purple transition">Goa Selomangleng</h4>
+                                    <p class="text-xs text-gray-500 mt-1"><i class="fas fa-clock mr-1"></i> 07:00 - 16:00</p>
+                                </div>
+                                <a href="https://maps.google.com" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-kediri-purple hover:bg-tahu-yellow hover:text-white transition">
+                                    <i class="fas fa-location-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:border-tahu-yellow transition group">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-gray-800 group-hover:text-kediri-purple transition">Pusat Tahu Takwa</h4>
+                                    <p class="text-xs text-gray-500 mt-1"><i class="fas fa-map-pin mr-1"></i> Jl. Pattimura</p>
+                                </div>
+                                <a href="https://maps.google.com" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-kediri-purple hover:bg-tahu-yellow hover:text-white transition">
+                                    <i class="fas fa-location-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/3 h-[400px] lg:h-[500px] bg-gray-200 relative">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63238.99595507722!2d111.996395!3d-7.816666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78570080875961%3A0x4027a76e3532700!2sKediri%2C%20Kediri%20Regency%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1715000000000!5m2!1sen!2sid" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="grayscale hover:grayscale-0 transition duration-500"
+                    ></iframe>
+                    
+                    <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-lg text-xs font-bold shadow-lg">
+                        <i class="fas fa-map text-kediri-purple"></i> Peta Kediri Raya
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-300 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="#" class="text-2xl font-display font-bold text-white block mb-4">
+                        VISIT<span class="text-kediri-purple">KEDIRI</span>
+                    </a>
+                    <p class="text-sm text-gray-500 mb-6">
+                        Website promosi pariwisata independen untuk memperkenalkan pesona Kota Kediri kepada dunia.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-kediri-purple hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-kediri-purple hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-kediri-purple hover:text-white transition"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Navigasi</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#destinasi" class="hover:text-tahu-yellow transition">Destinasi Wisata</a></li>
+                        <li><a href="#hotel" class="hover:text-tahu-yellow transition">Hotel & Akomodasi</a></li>
+                        <li><a href="#pendidikan-main" class="hover:text-tahu-yellow transition">Sarana Pendidikan</a></li>
+                        <li><a href="#kuliner" class="hover:text-tahu-yellow transition">Kuliner & Oleh-oleh</a></li>
+                        <li><a href="#peta" class="hover:text-tahu-yellow transition">Peta & Rute</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Kontak Darurat</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-phone-alt mr-2 text-kediri-purple"></i> 112 (Call Center)</li>
+                        <li><i class="fas fa-hospital mr-2 text-kediri-purple"></i> RSUD Gambiran</li>
+                        <li><i class="fas fa-shield-alt mr-2 text-kediri-purple"></i> Polres Kediri Kota</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Info Terbaru</h4>
+                    <form class="flex flex-col gap-2">
+                        <input type="email" placeholder="Email Anda" class="bg-gray-800 border border-gray-700 text-white px-4 py-2 rounded focus:outline-none focus:border-kediri-purple">
+                        <button class="bg-kediri-purple text-white px-4 py-2 rounded font-bold hover:bg-kediri-dark transition">Langganan</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-600">
+                © 2025 Visit Kediri Project. Dibuat dengan <i class="fas fa-heart text-red-500"></i> & Gemini AI.
+            </div>
+        </div>
+    </footer>
+
+    <div id="modalDetail" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-black/70 transition-opacity backdrop-blur-sm" onclick="closeModal()"></div>
+    
+        <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-2xl border-t-4 border-kediri-purple">
+                
+                <div class="relative h-64">
+                    <img id="modalImg" src="" alt="Detail Wisata" class="w-full h-full object-cover">
+                    <button onclick="closeModal()" class="absolute top-4 right-4 bg-white/20 hover:bg-white text-white hover:text-red-600 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-md transition">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 id="modalTitle" class="text-3xl font-display font-bold text-white">Judul Wisata</h3>
+                        <span id="modalCategory" class="text-tahu-yellow font-bold text-sm tracking-widest uppercase">Kategori</span>
+                    </div>
+                </div>
+    
+                <div class="p-6 sm:p-8">
+                    <div class="grid grid-cols-2 gap-4 mb-6 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Tiket Masuk</p>
+                            <p id="modalPrice" class="font-bold text-kediri-purple">-</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Jam Buka</p>
+                            <p id="modalHours" class="font-bold text-kediri-purple">-</p>
+                        </div>
+                    </div>
+    
+                    <div class="prose max-w-none text-gray-600 mb-6">
+                        <p id="modalDesc">Deskripsi lengkap akan muncul di sini.</p>
+                    </div>
+
+                    <div id="galleryContainer" class="hidden mb-6">
+                        <h4 class="font-bold text-sm text-kediri-purple mb-2">Galeri Foto:</h4>
+                        <div id="modalGallery" class="grid grid-cols-4 gap-2">
+                            </div>
+                    </div>
+    
+                    <div class="flex justify-end gap-3">
+                        <button onclick="closeModal()" class="px-5 py-2.5 rounded-full text-gray-600 hover:bg-gray-100 font-bold transition">Tutup</button>
+                        <a id="modalMapLink" href="#" target="_blank" class="px-5 py-2.5 rounded-full bg-kediri-purple text-white font-bold hover:bg-tahu-yellow hover:text-black transition shadow-lg">
+                            <i class="fas fa-map-marked-alt mr-2"></i> Buka di Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
