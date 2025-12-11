@@ -393,12 +393,12 @@ document.addEventListener('DOMContentLoaded', () => {
         'sman5': {
             title: "SMAN 5 Taruna Brawijaya",
             category: "Sekolah Unggulan",
-            image: "SMA5.JPG",
+            image: "SMA5.jpg",
             // [BARU] GALERI GAMBAR TAMBAHAN
             gallery: [
-                "SMA5LOGO.PNG", // View Utama
-                "SMA53.JPG", // View Taman/Suasana (Placeholder)
-                "SMA52.JPG", // View Detail
+                "SMA5LOGO.png", // View Utama
+                "SMA53.jpg", // View Taman/Suasana (Placeholder)
+                "SMA52.jpg", // View Detail
                 
             ],
             price: "Sekolah Negeri",
@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'sman1': {
             title: "SMAN 1 Kediri",
             category: "Sekolah Favorit",
-            image: "SMAS.JPG",
+            image: "SMAS.jpg",
             price: "Sekolah Negeri",
             hours: "07.00 - 15.30 WIB",
             desc: "Dikenal sebagai SMASKA, sekolah prestisius dengan prestasi akademik tinggi.",
@@ -418,12 +418,12 @@ document.addEventListener('DOMContentLoaded', () => {
         'sman2': {
             title: "SMAN 2 Kediri",
             category: "Sekolah Favorit",
-            image: "SMA2.JPG",
+            image: "SMA2.jpg",
             // [BARU] GALERI GAMBAR TAMBAHAN
             gallery: [
-                "SMA24.JPG", // View Utama
-                "SMA21.JPG", // View Taman/Suasana (Placeholder)
-                "SMA23.JPG", // View Detail
+                "SMA24.jpg", // View Utama
+                "SMA21.jpg", // View Taman/Suasana (Placeholder)
+                "SMA23.jpg", // View Detail
                 
             ],
             price: "Sekolah Negeri",
@@ -434,7 +434,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'man2': {
             title: "MAN 2 Kota Kediri",
             category: "Madrasah Unggulan",
-            image: "MAN2.JPG",
+            image: "MAN2.jpg",
             price: "Madrasah Negeri",
             hours: "07.00 - 15.30 WIB",
             desc: "Madrasah Aliyah Negeri unggulan berbasis riset.",
